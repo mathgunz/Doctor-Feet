@@ -16,7 +16,7 @@ public class ClienteController {
 
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "cadastro-cliente";
     }
     
     @RequestMapping("/listaconvidados")

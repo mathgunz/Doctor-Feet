@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>CRUD com Bootstrap 3</title>
+
+ <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body> 
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+ <div class="container-fluid">
+  <div class="navbar-header">
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+   </button>
+   <a class="navbar-brand" href="#">Doctor feet - Controle de retorno</a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+   <ul class="nav navbar-nav navbar-right">
+    <li><a href="cadastro-cliente.html">Adicionar cliente</a></li>
+    <li><a href="cadastro-colaborador.html">Adicionar Funcionario</a></li>
+   </ul>
+  </div>
+ </div>
+</nav>
+
+<div id="main" class="container-fluid" style="margin-top: 56px;">
+ <h3 class="page-header">Cadastrar Colaborador</h3>
+
+
+  <div class="row">
+    <div role="main" class="col-md-6 col-md-push-3">
+      <div id="main" class="container-fluid">
+
+
+      <form action="index.html">
+        
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label for="exampleInputEmail1">Nome</label>
+            <input type="name" class="form-control" id="name" placeholder="Digite o nome">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Digite o email">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputTelefone">Telefone</label>
+            <input type="telefone" class="form-control" id="inputTelefone" placeholder="Digite o telefone">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="template.html" class="btn btn-default">Cancelar</a>
+            <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#erro-cadastro-modal">exec modal</a>
+            <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#confirmar-cadastro-modal">rigth modal</a>
+           </div>
+        </div>
+
+      </form>
+
+      </div>        
+    </div>
+      <aside role="complementary" class="col-md-3 col-md-push-3">
+            
+      </aside>
+      <nav class="col-md-3 col-md-pull-9">
+
+      </nav>
+  </div>
+    <footer class="row">
+        
+    </footer>
+</div>
+
+
+<div class="modal fade" id="erro-cadastro-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+      </div>
+      <div class="modal-body">
+        Falha ao salvar o colaborador, valide os campos!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Sim</button>
+  <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmar-cadastro-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+      </div>
+      <div class="modal-body">
+        Colaborador cadastrado com sucesso!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
