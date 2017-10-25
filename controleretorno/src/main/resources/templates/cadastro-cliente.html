@@ -78,7 +78,7 @@
       </form>
 
 
-      <form>
+      <form method="get" action="${/lista-clientes}">
 
       <div class="container-fluid">
         <h4 id="modalLabel">Clientes</h4>
@@ -97,26 +97,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1001</td>
-                <td>12312312</td>
-                <td>Matheus Siqueira Graciano</td>
-                <td>(11)99445-6761</td>
+              <tr th:each="cliente : ${clientes}">
+                <td><span th:text="${cliente.nome}"></span></td>
+                <td><span th:text="${cliente.email}"></span></td>
+                <td><span th:text="${cliente.telefone}"></span></td>
+                <td><span th:text="${cliente.matricula}"></span></td>
               </tr>
-              <tr>
-                <td>1001</td>
-                <td>12312312</td>
-                <td>Matheus Siqueira Graciano</td>
-                <td>(11)99445-6761</td>
-              </tr>
-
-              <tr>
-                <td>1001</td>
-                <td>12312312</td>
-                <td>Matheus Siqueira Graciano</td>
-                <td>(11)99445-6761</td>
-              </tr>
-
+           
             </tbody>
           </table>
         </div>

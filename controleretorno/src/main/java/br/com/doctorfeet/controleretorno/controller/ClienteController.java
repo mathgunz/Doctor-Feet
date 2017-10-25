@@ -10,23 +10,17 @@ import br.com.doctorfeet.controleretorno.repository.ClienteRepository;
 
 @Controller
 public class ClienteController {
-	
-	 @Autowired
-	 private ClienteRepository repository;
 
-    @RequestMapping("/")
-    public String index(){
-        return "cadastro-cliente";
-    }
-    
-    @RequestMapping("/listaconvidados")
-    public String listaConvidados(Model model){
-    	
-    	Iterable<Cliente> clientes = repository.findAll();
-    	
-    	model.addAttribute("clientes", clientes);
-    	
-    	return "listaconvidados";
-    }
+	@Autowired
+	private ClienteRepository repository;
+
+	@RequestMapping("/cliente")
+	public String index(Model model) {
+
+		Iterable<Cliente> clientes = repository.findAll();
+		model.addAttribute("clientes", clientes);
+
+		return "cadastro-cliente";
+	}
 
 }
