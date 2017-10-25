@@ -105,3 +105,11 @@ ADD foreign key (funcionario_id) references funcionario(id);
 
 ALTER TABLE agendamento
 ADD foreign key (contato_id) references contato(id);
+
+
+
+
+
+use controleretorno;
+
+insert into cliente (id,nome,email,telefone) values (1,'matheus','matheusgraciano@gmail,com', '600');
