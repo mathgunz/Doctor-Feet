@@ -35,7 +35,7 @@
 <div id="main" class="container-fluid" style="margin-top: 56px;">
  <h3 class="page-header">Clientes para entrar em contato</h3>
 
-  <div class="row"  style="margin-right: -500px; margin-left: -500px">
+  <div class="row"  style="margin-right: -400px; margin-left: -400px">
     <div role="main" class="col-md-6 col-md-push-3">
       <div id="main" class="container-fluid">
 
@@ -56,9 +56,6 @@
             </span>
           </div>
           
-        </div>
-        <div class="col-sm-3">
-          <a href="add.html" class="btn btn-primary pull-right h2">Novo Item</a>
         </div>
       </div> <!-- /#top -->
 
@@ -88,9 +85,7 @@
           <td>20/10/2017</td>
           <td>Cliente pediu retorno</td>
           <td class="actions">
-            <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-            <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-            <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+            <a class="btn btn-warning btn-xs" href="#" data-toggle="modal" data-target="#editar-modal">Editar</a>
           </td>
         </tr>
         <tr>
@@ -102,9 +97,7 @@
           <td>20/10/2017</td>
           <td>Cliente pediu retorno</td>
           <td class="actions">
-            <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-            <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-            <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+            <a class="btn btn-warning btn-xs" href="#" data-toggle="modal" data-target="#editar-modal">Editar</a>
           </td>
         </tr>
 
@@ -117,9 +110,7 @@
           <td>20/10/2017</td>
           <td>Cliente pediu retorno</td>
           <td class="actions">
-            <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-            <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-            <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+            <a class="btn btn-warning btn-xs" href="#" data-toggle="modal" data-target="#editar-modal">Editar</a>
           </td>
         </tr>
 
@@ -142,8 +133,7 @@
       </div> <!-- /#bottom -->
      </div> <!-- /#main -->
 
-     <!-- Modal -->
-    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    <div class="modal fade" id="editar-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -151,13 +141,37 @@
             <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
           </div>
           <div class="modal-body">
-            Deseja realmente excluir este item?
+
+            <div id="main" class="container-fluid">
+            
+             <div id="main" class="container-fluid">
+              <h3 class="page-header">Atualizar contato</h3>
+              
+              <div class="row">
+                
+                <div class="col-md-4">
+                  <p><strong>Nome</strong></p>
+                  <p>Matheus Siqueira Graciano</p>
+                </div>
+              
+                <div class="col-md-4">
+                  <p><strong>Feedback</strong></p>
+                  <p>Não agendou</p>
+                </div>
+              
+                <div class="col-md-4">
+                  <p><strong>Observação</strong></p>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Digite uma Observação">
+                </div>
+
+              </div>
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Sim</button>
-      <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+            <button type="button" class="btn btn-primary">Salvar</button>
           </div>
         </div>
+
       </div>
     </div>
 
