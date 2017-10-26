@@ -78,7 +78,7 @@
       </form>
 
 
-      <form method="get" action="${/lista-clientes}">
+      <form>
 
       <div class="container-fluid">
         <h4 id="modalLabel">Clientes</h4>
@@ -102,6 +102,10 @@
                 <td><span th:text="${cliente.email}"></span></td>
                 <td><span th:text="${cliente.telefone}"></span></td>
                 <td><span th:text="${cliente.matricula}"></span></td>
+	   			<td align="center">
+	    			<a th:href="@{/cliente/edit/{id}(id=${cliente.id})}"><span class="glyphicon glyphicon-edit"></span></a> &nbsp; &nbsp;
+				</td>
+                
               </tr>
            
             </tbody>
