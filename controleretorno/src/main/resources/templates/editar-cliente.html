@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
  <meta charset="utf-8"></meta>
- <meta http-equiv="X-UA-Compatible" content="IE=edge"> </meta>
- <meta name="viewport" content="width=device-width, initial-scale=1" ></meta>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+ <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
  <title>CRUD com Bootstrap 3</title>
 
  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
@@ -30,8 +33,8 @@
  </div>
 </nav>
 
-<div id="main" class="container-fluid" style="margin-top: 56px;">
- <h3 class="page-header">Cadastrar Colaborador</h3>
+<div id="main" layout:fragment="content" class="container-fluid" style="margin-top: 56px;">
+ <h3 class="page-header">Editar Cliente</h3>
 
 
   <div class="row">
@@ -39,27 +42,42 @@
       <div id="main" class="container-fluid">
 
 
-      <form action="index.html">
+      <form th:object="${editarCliente}" th:action="@{/cliente/update}" action="#" method="POST">
+        <input type="hidden" th:field="*{id}"/>
         
         <div class="row">
+        
           <div class="form-group col-md-4">
             <label for="exampleInputEmail1">Nome</label>
-            <input type="name" class="form-control" id="name" placeholder="Digite o nome"></input>
+            <input type="name" th:field="*{nome}" class="form-control" id="name" placeholder="Digite o nome"></input>
           </div>
+          
           <div class="form-group col-md-4">
             <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Digite o email"></input>
+            <input type="text" th:field="*{email}" class="form-control" id="inputEmail" placeholder="Digite o email"></input>
           </div>
+          
           <div class="form-group col-md-4">
             <label for="inputTelefone">Telefone</label>
-            <input type="telefone" class="form-control" id="inputTelefone" placeholder="Digite o telefone"></input>
+            <input type="text" th:field="*{telefone}" class="form-control" id="inputTelefone" placeholder="Digite o telefone"></input>
           </div>
+          
+          <div class="form-group col-md-4">
+            <label for="inputMatricula">Matricula</label>
+            <input type="text" th:field="*{matricula}" class="form-control" id="inputMatricula" placeholder="Digite a matricula"></input>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="inputDataAgendada">Ultimo atendimento</label>
+            <input type="text" class="form-control" id="inputDataAgendada" placeholder="Digite ultimo agendamento"></input>
+          </div>
+
         </div>
 
         <div class="row">
           <div class="col-md-12">
-            <button type="submit" class="btn btn-primary">Salvar</button>
             <a href="template.html" class="btn btn-default">Cancelar</a>
+            <button type="submit" class="btn btn-success">Salvar</button>
             <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#erro-cadastro-modal">exec modal</a>
             <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#confirmar-cadastro-modal">rigth modal</a>
            </div>
@@ -90,7 +108,7 @@
         <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
       </div>
       <div class="modal-body">
-        Falha ao salvar o colaborador, valide os campos!
+        Falha ao salvar o cliente, valide os campos!
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Sim</button>
@@ -108,7 +126,7 @@
         <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
       </div>
       <div class="modal-body">
-        Colaborador cadastrado com sucesso!
+        Cliente cadastrado com sucesso!
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Ok</button>
@@ -117,7 +135,24 @@
   </div>
 </div>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<div class="modal fade" th:fragment="modalContents" id="editar-cliente-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+      </div>
+      <div class="modal-body">
+        Cliente cadastrado com sucesso!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <script src="https://ajax.go	ogleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  
 <head>
  <meta charset="utf-8"></meta>
  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
@@ -24,7 +28,7 @@
   <div id="navbar" class="navbar-collapse collapse">
    <ul class="nav navbar-nav navbar-right">
     <li><a th:href="@{/cliente}">Adicionar cliente</a></li>
-    <li><a href="cadastro-colaborador.html">Adicionar Funcionario</a></li>
+    <li><a th:href="@{/colaborador}">Adicionar Funcionario</a></li>
    </ul>
   </div>
  </div>
