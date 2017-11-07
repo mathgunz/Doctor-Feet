@@ -125,6 +125,7 @@ public class Cliente {
 		contatoResumo.setClienteId(this.id);
 		contatoResumo.setMatricula(this.matricula);
 		contatoResumo.setTelefone(this.telefone);
+		contatoResumo.setNome(this.nome);
 		
 		return contatoResumo;
 	}
