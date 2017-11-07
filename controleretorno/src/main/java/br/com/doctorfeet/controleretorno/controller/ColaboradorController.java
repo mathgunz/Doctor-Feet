@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.doctorfeet.controleretorno.model.Funcionario;
+import br.com.doctorfeet.controleretorno.entity.Funcionario;
 import br.com.doctorfeet.controleretorno.service.ColaboradorService;
 
 @Controller

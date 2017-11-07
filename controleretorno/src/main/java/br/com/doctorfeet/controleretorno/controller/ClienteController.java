@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.doctorfeet.controleretorno.model.Cliente;
+import br.com.doctorfeet.controleretorno.entity.Cliente;
 import br.com.doctorfeet.controleretorno.service.ClienteService;
 
 @Controller

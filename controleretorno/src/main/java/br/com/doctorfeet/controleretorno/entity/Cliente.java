@@ -1,4 +1,4 @@
-package br.com.doctorfeet.controleretorno.model;
+package br.com.doctorfeet.controleretorno.entity;
 
 import java.util.Date;
 import java.util.List;
@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlTransient;
+
+import br.com.doctorfeet.controleretorno.model.ContatoResumo;
 
 @Entity(name="cliente")
 public class Cliente {
@@ -32,7 +34,7 @@ public class Cliente {
     private String telefone;
 
     @Column(name = "matricula")
-    private Integer matricula;
+    private Long matricula;
 
     @Column(name = "dh_inclusao")
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,11 +84,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Integer getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(Integer matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
@@ -115,4 +117,15 @@ public class Cliente {
     public void setAgendamentoList(List<Agendamento> agendamentoList) {
         this.agendamentoList = agendamentoList;
     }
+
+	public ContatoResumo convertToContatoResumo() {
+		
+		ContatoResumo contatoResumo = new ContatoResumo();
+		
+		contatoResumo.setClienteId(this.id);
+		contatoResumo.setMatricula(this.matricula);
+		contatoResumo.setTelefone(this.telefone);
+		
+		return contatoResumo;
+	}
 }

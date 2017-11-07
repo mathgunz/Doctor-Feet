@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.doctorfeet.controleretorno.model;
+package br.com.doctorfeet.controleretorno.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import br.com.doctorfeet.controleretorno.model.ContatoResumo;
 
 @Entity
 @Table(name = "agendamento")
@@ -55,6 +57,8 @@ public class Agendamento implements Serializable {
     @JoinColumn(name = "contato_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Contato contatoId;
+    
+    public Agendamento(){}
 
     public Agendamento(Integer id) {
         this.id = id;
@@ -123,5 +127,21 @@ public class Agendamento implements Serializable {
     public void setContatoId(Contato contatoId) {
         this.contatoId = contatoId;
     }
+
+	public ContatoResumo convertToContatoResumo() {
+		
+		ContatoResumo contatoResumo = new ContatoResumo();
+		
+		contatoResumo.setClienteId(this.clienteId.getId());
+		contatoResumo.setMatricula(this.clienteId.getMatricula());
+		contatoResumo.setNome(this.clienteId.getNome());
+		contatoResumo.setTelefone(this.clienteId.getTelefone());
+		contatoResumo.setFeedback(this.contatoId.getFeedbackId().getNome());
+		contatoResumo.setObservacao(this.contatoId.getObservacao());
+		contatoResumo.setUltimoContato(this.contatoId.getDhContato() != null ? this.contatoId.getDhContato().toString(): null);
+		contatoResumo.setUltimoAgendamento(this.dhAgendamento != null ? this.dhAgendamento.toString() : null);
+		
+		return contatoResumo;
+	}
 
 }

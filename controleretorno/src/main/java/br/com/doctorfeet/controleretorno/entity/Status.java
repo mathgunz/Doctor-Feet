@@ -3,42 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.doctorfeet.controleretorno.model;
+package br.com.doctorfeet.controleretorno.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author mathe
  */
 @Entity
-@Table(name = "tipo_servico")
-public class TipoServico implements Serializable {
+@Table(name = "status")
+public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
     @Column(name = "nome")
     private String nome;
-    @Column(name = "dh_inclusao")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dhInclusao;
 
-    public TipoServico() {
+    @OneToMany(mappedBy = "statusId", fetch = FetchType.LAZY)
+    private List<Agendamento> agendamentoList;
+
+    public Status() {
     }
 
-    public TipoServico(Integer id) {
+    public Status(Integer id) {
         this.id = id;
     }
 
@@ -58,12 +60,12 @@ public class TipoServico implements Serializable {
         this.nome = nome;
     }
 
-    public Date getDhInclusao() {
-        return dhInclusao;
+    @XmlTransient
+    public List<Agendamento> getAgendamentoList() {
+        return agendamentoList;
     }
 
-    public void setDhInclusao(Date dhInclusao) {
-        this.dhInclusao = dhInclusao;
+    public void setAgendamentoList(List<Agendamento> agendamentoList) {
+        this.agendamentoList = agendamentoList;
     }
-    
 }

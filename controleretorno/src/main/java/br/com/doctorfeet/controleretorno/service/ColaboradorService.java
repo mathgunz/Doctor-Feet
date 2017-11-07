@@ -1,6 +1,6 @@
 package br.com.doctorfeet.controleretorno.service;
 
-import br.com.doctorfeet.controleretorno.model.Funcionario;
+import br.com.doctorfeet.controleretorno.entity.Funcionario;
 
 public interface ColaboradorService {
 

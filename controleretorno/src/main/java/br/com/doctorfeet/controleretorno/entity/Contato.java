@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.doctorfeet.controleretorno.model;
+package br.com.doctorfeet.controleretorno.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +22,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlTransient;
+
+import br.com.doctorfeet.controleretorno.model.ContatoResumo;
 
 /**
  *
@@ -61,6 +64,8 @@ public class Contato implements Serializable {
 
     @OneToMany(mappedBy = "contatoId", fetch = FetchType.LAZY)
     private List<Agendamento> agendamentoList;
+    
+    public Contato(){}
 
     public Contato(Integer id) {
         this.id = id;
@@ -129,6 +134,21 @@ public class Contato implements Serializable {
 
     public void setAgendamentoList(List<Agendamento> agendamentoList) {
         this.agendamentoList = agendamentoList;
+    }
+    
+    public ContatoResumo convertToContatoResumo(){
+    	
+		ContatoResumo contatoResumo = new ContatoResumo();
+		
+		contatoResumo.setClienteId(this.clienteId.getId());
+		contatoResumo.setMatricula(this.clienteId.getMatricula());
+		contatoResumo.setNome(this.clienteId.getNome());
+		contatoResumo.setTelefone(this.clienteId.getTelefone());
+		contatoResumo.setObservacao(this.observacao);
+		contatoResumo.setFeedback(this.feedbackId.getNome());
+		contatoResumo.setUltimoContato(this.dhContato.toString());
+
+		return contatoResumo;
     }
 
 }

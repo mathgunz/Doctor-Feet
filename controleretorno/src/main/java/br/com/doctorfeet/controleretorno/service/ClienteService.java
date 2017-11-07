@@ -1,6 +1,6 @@
 package br.com.doctorfeet.controleretorno.service;
 
-import br.com.doctorfeet.controleretorno.model.Cliente;
+import br.com.doctorfeet.controleretorno.entity.Cliente;
 
 public interface ClienteService {
 
