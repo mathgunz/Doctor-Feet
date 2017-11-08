@@ -29,19 +29,19 @@ public class ColaboradorController {
 	}
 	
 	@RequestMapping(value ="/colaborador/create", method = RequestMethod.POST)
-	public ModelAndView create(Funcionario colaborador){
+	public void create(Funcionario colaborador){
 		
 		this.colaboradorService.save(colaborador);
-		
-		return null;
 	}
 	
 	@RequestMapping(value = "/colaborador/update", method = RequestMethod.PUT)
 	public ModelAndView update(Funcionario colaborador){
 		
+		ModelAndView modelAndView = new ModelAndView();
 		this.colaboradorService.save(colaborador);
+		modelAndView.addObject("colaborador", colaborador);
 		
-		return null;
+		return modelAndView;
 	}
 	
 

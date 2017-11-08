@@ -17,6 +17,8 @@ public class ContatoResumo {
 	private String feedback;
 	
 	private String observacao;
+	
+	public ContatoResumo(){}
 
 	public Long getClienteId() {
 		return clienteId;
