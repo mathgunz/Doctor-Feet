@@ -1,24 +1,39 @@
 package br.com.doctorfeet.controleretorno.model;
 
+import java.util.List;
+
+import br.com.doctorfeet.controleretorno.entity.Feedback;
+
 public class ContatoResumo {
-	
+
 	private Long clienteId;
-	
+
 	private Long matricula;
-	
+
 	private String nome;
-	
+
 	private String telefone;
-	
+
 	private String ultimoAgendamento;
-	
+
 	private String ultimoContato;
-	
+
 	private String feedback;
 	
+	private List<Feedback> feedbacksForm;
+
+	public List<Feedback> getFeedbacksForm() {
+		return feedbacksForm;
+	}
+
+	public void setFeedbacksForm(List<Feedback> feedbacksForm) {
+		this.feedbacksForm = feedbacksForm;
+	}
+
 	private String observacao;
-	
-	public ContatoResumo(){}
+
+	public ContatoResumo() {
+	}
 
 	public Long getClienteId() {
 		return clienteId;
@@ -83,5 +98,5 @@ public class ContatoResumo {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
+
 }
