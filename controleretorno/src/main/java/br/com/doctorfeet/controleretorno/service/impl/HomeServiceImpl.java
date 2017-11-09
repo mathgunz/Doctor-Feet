@@ -63,12 +63,10 @@ public class HomeServiceImpl implements HomeService {
 
 	public void atualizarContato(ContatoResumo contatoResumo) {
 
-		if (contatoResumo.getFeedback().equals("3") || contatoResumo.getFeedback().equals("4")
-				|| contatoResumo.getFeedback().equals("5")|| contatoResumo.getFeedback().equals("2")) {
-
-			// ele vai continuar aparecendo mas vamos precisar atualizar os dados
+		if (contatoResumo.getFeedback().equals("1")) {
+	
 			
-		}else if(contatoResumo.getFeedback().equals("1")){
+		}else {
 			
 			// Então ele agendou, vamos remover o contato e inserir um novo e atualizado e adicionar nova log
 			
