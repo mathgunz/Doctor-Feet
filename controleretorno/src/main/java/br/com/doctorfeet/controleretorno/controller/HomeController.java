@@ -76,6 +76,7 @@ public class HomeController {
 	public String atualizarContato(@Validated ContatoResumo contatoResumo){
 		
 		
+		this.service.atualizarContato(contatoResumo);
 		
 		
 		return "redirect:/";

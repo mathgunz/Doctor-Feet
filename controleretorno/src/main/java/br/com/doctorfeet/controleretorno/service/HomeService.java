@@ -8,4 +8,6 @@ public interface HomeService {
 
 	List<ContatoResumo> listClientesParaContato();
 
+	void atualizarContato(ContatoResumo contatoResumo);
+
 }

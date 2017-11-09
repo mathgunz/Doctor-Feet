@@ -24,6 +24,16 @@ public class ContatoResumo {
 
 	private String feedback;
 	
+	private String feedbackId;
+	
+	public String getFeedbackId() {
+		return feedbackId;
+	}
+
+	public void setFeedbackId(String feedbackId) {
+		this.feedbackId = feedbackId;
+	}
+
 	private List<Feedback> feedbacksForm;
 
 	private String observacao;

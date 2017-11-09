@@ -62,7 +62,7 @@
 								<label>Feedback</label>			
 								<select class="form-control" name="Feedback" >
 								<option th:text="Selecione"></option>
-									<option th:each="feedback2 : ${contatoResumo.feedbacksForm}" th:value="${feedback2.id}" th:text="${feedback2.nome}"></option>
+									<option th:each="feedback : ${contatoResumo.feedbacksForm}" th:value="${feedback.id}" th:text="${feedback.nome}"></option>
 								</select>
 							</div>
 							<div class="form-group col-md-4">		
