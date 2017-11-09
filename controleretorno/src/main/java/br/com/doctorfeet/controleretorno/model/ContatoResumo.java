@@ -7,6 +7,10 @@ import br.com.doctorfeet.controleretorno.entity.Feedback;
 public class ContatoResumo {
 
 	private Long clienteId;
+	
+	private Long contatoId;
+	
+	private Long agendamentoId;
 
 	private Long matricula;
 
@@ -22,6 +26,8 @@ public class ContatoResumo {
 	
 	private List<Feedback> feedbacksForm;
 
+	private String observacao;
+
 	public List<Feedback> getFeedbacksForm() {
 		return feedbacksForm;
 	}
@@ -30,10 +36,26 @@ public class ContatoResumo {
 		this.feedbacksForm = feedbacksForm;
 	}
 
-	private String observacao;
 
 	public ContatoResumo() {
 	}
+	
+	public Long getContatoId() {
+		return contatoId;
+	}
+
+	public void setContatoId(Long contatoId) {
+		this.contatoId = contatoId;
+	}
+
+	public Long getAgendamentoId() {
+		return agendamentoId;
+	}
+
+	public void setAgendamentoId(Long agendamentoId) {
+		this.agendamentoId = agendamentoId;
+	}
+
 
 	public Long getClienteId() {
 		return clienteId;

@@ -29,10 +29,10 @@ public class Agendamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "tipo_servico_id")
-    private Integer tipoServicoId;
+    private Long tipoServicoId;
 
     @Column(name = "dh_inclusao")
     @Temporal(TemporalType.TIMESTAMP)
@@ -60,23 +60,23 @@ public class Agendamento implements Serializable {
     
     public Agendamento(){}
 
-    public Agendamento(Integer id) {
+    public Agendamento(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getTipoServicoId() {
+    public Long getTipoServicoId() {
         return tipoServicoId;
     }
 
-    public void setTipoServicoId(Integer tipoServicoId) {
+    public void setTipoServicoId(Long tipoServicoId) {
         this.tipoServicoId = tipoServicoId;
     }
 
@@ -139,6 +139,7 @@ public class Agendamento implements Serializable {
 		contatoResumo.setFeedback(this.contatoId.getFeedbackId().getNome());
 		contatoResumo.setObservacao(this.contatoId.getObservacao());
 		contatoResumo.setUltimoContato(this.contatoId.getDhContato() != null ? this.contatoId.getDhContato().toString(): null);
+		contatoResumo.setContatoId(this.contatoId != null ? this.contatoId.getId() : null);
 		contatoResumo.setUltimoAgendamento(this.dhAgendamento != null ? this.dhAgendamento.toString() : null);
 		
 		return contatoResumo;

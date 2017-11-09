@@ -37,7 +37,7 @@ public class Contato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "observacao")
     private String observacao;
@@ -67,15 +67,15 @@ public class Contato implements Serializable {
     
     public Contato(){}
 
-    public Contato(Integer id) {
+    public Contato(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -147,6 +147,7 @@ public class Contato implements Serializable {
 		contatoResumo.setObservacao(this.observacao);
 		contatoResumo.setFeedback(this.feedbackId.getNome());
 		contatoResumo.setUltimoContato(this.dhContato.toString());
+		contatoResumo.setContatoId(this.id);
 
 		return contatoResumo;
     }

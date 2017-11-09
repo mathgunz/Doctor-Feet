@@ -41,20 +41,45 @@
 		<h3 class="page-header">Editar Contato</h3>
 
 		<div class="row" style="margin-right: -400px; margin-left: -400px">
-			<div role="main" class="col-md-6 col-md-push-3">
+			<div role="main" class="col-md-4 col-md-push-4">
 				<div id="main" class="container-fluid">
 				<!--  inicio corpo  -->
 						
 				<form class="form-inline" method="POST" th:object="${contatoResumo}" th:action="@{/alterarContato}" style="margin: 20px 0">
 					<div class="form-group" >
-					    <input type="text" class="form-control" value="${contatoResumo.clienteId}" placeholder="Id" th:field="*{clienteId}" readonly="readonly"/> 
-						<input type="text" class="form-control" value="${contatoResumo.nome}" placeholder="Codigo" th:field="*{nome}" /> 
+					
+						<div class="row">
+				
+							<div class="form-group col-md-4">
+								<label>Nome</label>
+								<input type="text" class="form-control" value="${contatoResumo.nome}" placeholder="Codigo" th:field="*{nome}" readonly="readonly"/> 
+							</div>
+							<div class="form-group col-md-4">
+								<label>Matricula</label>
+								<input type="text" class="form-control" value="${contatoResumo.matricula}" placeholder="Codigo" th:field="*{matricula}" readonly="readonly"/> 
+							</div>		
+							<div class="form-group col-md-6">
+								<label>Feedback</label>			
+								<select class="form-control" name="Feedback" >
+								<option th:text="Selecione"></option>
+									<option th:each="feedback2 : ${contatoResumo.feedbacksForm}" th:value="${feedback2.id}" th:text="${feedback2.nome}"></option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">		
+								<label>Observação</label>
+								<input type="text" class="form-control" value="${contatoResumo.observacao}" placeholder="Observação" th:field="*{observacao}" /> 
+							</div>	
+						</div>
 						
-						<select class="form-control" name="Feedback" >
-							<option th:each="feedback2 : ${contatoResumo.feedbacksForm}" th:value="${feedback2.id}" th:text="${feedback2.nome}"></option>
-						</select>
-												
-						<button type="submit" class="btn btn-primary">Alterar</button>
+						<input type="hidden" class="form-control" value="${contatoResumo.clienteId}" placeholder="Id" th:field="*{clienteId}" readonly="readonly"/> 	
+						<input type="hidden" class="form-control" value="${contatoResumo.contatoId}" placeholder="Id" th:field="*{contatoId}" readonly="readonly" /> 
+						<input type="hidden" class="form-control" value="${contatoResumo.agendamentoId}" placeholder="Id" th:field="*{agendamentoId}" readonly="readonly" /> 
+						
+						<div class="row">
+						<div class="form-group col-md-4" style="padding-top: 16px;">							
+							<button type="submit" class="btn btn-primary">Alterar</button>
+						</div>	
+						</div>
 					</div>
 				</form>
 					
