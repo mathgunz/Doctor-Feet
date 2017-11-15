@@ -132,6 +132,7 @@ public class Agendamento implements Serializable {
 		
 		ContatoResumo contatoResumo = new ContatoResumo();
 		
+		contatoResumo.setAgendamentoId(this.id);
 		contatoResumo.setClienteId(this.clienteId.getId());
 		contatoResumo.setMatricula(this.clienteId.getMatricula());
 		contatoResumo.setNome(this.clienteId.getNome());
