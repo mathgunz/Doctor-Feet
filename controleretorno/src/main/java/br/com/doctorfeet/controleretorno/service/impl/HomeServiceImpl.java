@@ -12,6 +12,8 @@ import br.com.doctorfeet.controleretorno.entity.Cliente;
 import br.com.doctorfeet.controleretorno.entity.Contato;
 import br.com.doctorfeet.controleretorno.entity.Feedback;
 import br.com.doctorfeet.controleretorno.entity.Funcionario;
+import br.com.doctorfeet.controleretorno.entity.Status;
+import br.com.doctorfeet.controleretorno.entity.TipoServico;
 import br.com.doctorfeet.controleretorno.model.ContatoResumo;
 import br.com.doctorfeet.controleretorno.repository.AgendamentoRepository;
 import br.com.doctorfeet.controleretorno.repository.ClienteRepository;
@@ -70,143 +72,98 @@ public class HomeServiceImpl implements HomeService {
 
 			if (contatoResumo.getContatoId() == null) {
 
-				Cliente cliente = new Cliente();
-				cliente.setId(contatoResumo.getClienteId());
+				this.criarContato(contatoResumo);
 
-				Feedback feedback = new Feedback();
-				feedback.setId(Long.valueOf(contatoResumo.getFeedback()));
-
-				Funcionario funcionario = new Funcionario();
-				funcionario.setId(1);
-
-				Contato contato = new Contato();
-				contato.setClienteId(cliente);
-				contato.setFeedbackId(feedback);
-				contato.setDhContato(new Date());
-				contato.setDhInclusao(new Date());
-				contato.setObservacao(contatoResumo.getObservacao());
-				contato.setFuncionarioId(funcionario);
-
-				Contato contatoNovo = this.contatoRepository.save(contato);
-
-				contatoResumo.setContatoId(contatoNovo.getId());
-			}
-
-			if (contatoResumo.getAgendamentoId() != null) {
-
-				this.agendamentoRepository.delete(contatoResumo.getAgendamentoId());
-
-				this.contatoRepository.delete(contatoResumo.getContatoId());
-
-				Cliente cliente = new Cliente();
-				cliente.setId(contatoResumo.getClienteId());
-
-				Funcionario funcionario = new Funcionario();
-				funcionario.setId(1);
-
-				Feedback feedback = new Feedback();
-				feedback.setId(Long.valueOf(contatoResumo.getFeedback()));
-
-				Contato contato = new Contato();
-				contato.setObservacao(contatoResumo.getObservacao());
-				contato.setClienteId(cliente);
-				contato.setFuncionarioId(funcionario);
-				contato.setFeedbackId(feedback);
-				contato.setFuncionarioId(funcionario);
-				contato.setDhContato(new Date());
-				contato.setDhInclusao(new Date());
-
-				Contato contatoEntity = this.contatoRepository.save(contato);
-
-				if (contatoEntity.getId() != null) {
-					Agendamento agendamento = new Agendamento();
-					agendamento.setClienteId(cliente);
-					agendamento.setContatoId(contato);
-					agendamento.setDhInclusao(new Date());
-					agendamento.setDhAgendamento(new Date());
-					agendamento.setFuncionarioId(funcionario);
-					agendamento.setStatusId(null);
-					agendamento.setTipoServicoId(null);
-
-					this.agendamentoRepository.save(agendamento);
+				if (contatoResumo.getContatoId() != null) {
+					this.criarAgendamento(contatoResumo);
 				}
-
 			} else {
 
-				Funcionario funcionario = new Funcionario();
-				funcionario.setId(1);
+				Contato contato = this.contatoRepository.findOne(contatoResumo.getContatoId());
+				contato.setClienteId(new Cliente(contatoResumo.getClienteId()));
+				contato.setFuncionarioId(new Funcionario(1));
+				contato.setFeedbackId(new Feedback(Long.valueOf(contatoResumo.getFeedback())));
+				contato.setDhContato(new Date());
+				contato.setDhInclusao(new Date());
+				contato.setObservacao(contatoResumo.getObservacao());
 
-				Feedback feedback = new Feedback();
-				feedback.setId(Long.valueOf(contatoResumo.getFeedback()));
+				this.contatoRepository.save(contato);
 
-				Contato contatoEntity = this.contatoRepository.findOne(contatoResumo.getContatoId());
-				contatoEntity.setObservacao(contatoResumo.getObservacao());
-				contatoEntity.setFeedbackId(feedback);
-				contatoEntity.setFuncionarioId(funcionario);
-				contatoEntity.setDhInclusao(new Date());
-				contatoEntity.setDhContato(new Date());
+				if (contatoResumo.getAgendamentoId() != null) {
+					Agendamento agendamento = this.agendamentoRepository.findOne(contatoResumo.getAgendamentoId());
 
-				Contato contatoRetorno = this.contatoRepository.save(contatoEntity);
-
-				if (contatoRetorno.getId() != null) {
-					Agendamento agendamento = new Agendamento();
-					agendamento.setClienteId(contatoEntity.getClienteId());
-					agendamento.setContatoId(contatoEntity);
-					agendamento.setDhInclusao(new Date());
 					agendamento.setDhAgendamento(new Date());
-					agendamento.setFuncionarioId(funcionario);
-					agendamento.setStatusId(null);
-					agendamento.setTipoServicoId(null);
+					agendamento.setDhInclusao(new Date());
+					agendamento.setStatusId(new Status(1));
+					agendamento.setTipoServicoId(1l);
 
-					this.agendamentoRepository.save(agendamento);
+				} else {
+					this.criarAgendamento(contatoResumo);
 				}
 
 			}
 
-			System.out.println("");
+		} else if (contatoResumo.getFeedback().equals("3") || contatoResumo.getFeedback().equals("4")
+				|| contatoResumo.getFeedback().equals("5")) {
 
-		} else {
-			// Então ele agendou, vamos remover o contato e inserir um novo e
-			// atualizado e adicionar nova log
+			Contato contato = this.contatoRepository.findOne(contatoResumo.getContatoId());
+			contato.setFeedbackId(new Feedback(Long.valueOf(contatoResumo.getFeedback())));
+			contato.setObservacao(contatoResumo.getObservacao());
 
-			if (contatoResumo.getContatoId() == null) {
+			this.contatoRepository.save(contato);
 
-				Cliente cliente = new Cliente();
-				cliente.setId(contatoResumo.getClienteId());
+		} else if(contatoResumo.getFeedback().equals("2")) {
+			
+			Contato contato = this.contatoRepository.findOne(contatoResumo.getContatoId());
+			contato.setClienteId(new Cliente(contatoResumo.getClienteId()));
+			contato.setFuncionarioId(new Funcionario(1));
+			contato.setFeedbackId(new Feedback(Long.valueOf(contatoResumo.getFeedback())));
+			contato.setDhContato(new Date());
+			contato.setDhInclusao(new Date());
+			contato.setObservacao(contatoResumo.getObservacao());
 
-				Feedback feedback = new Feedback();
-				feedback.setId(Long.valueOf(contatoResumo.getFeedback()));
-
-				Funcionario funcionario = new Funcionario();
-				funcionario.setId(1);
-
-				Contato contato = new Contato();
-				contato.setClienteId(cliente);
-				contato.setFeedbackId(feedback);
-				contato.setDhContato(new Date());
-				contato.setDhInclusao(new Date());
-				contato.setObservacao(contatoResumo.getObservacao());
-				contato.setFuncionarioId(funcionario);
-
-				Contato contatoNovo = this.contatoRepository.save(contato);
-
-				contatoResumo.setContatoId(contatoNovo.getId());
-			}
-
-				Funcionario funcionario = new Funcionario();
-				funcionario.setId(1);
-
-				Feedback feedback = new Feedback();
-				feedback.setId(Long.valueOf(contatoResumo.getFeedback()));
-
-				Contato contatoEntity = this.contatoRepository.findOne(contatoResumo.getContatoId());
-				contatoEntity.setObservacao(contatoResumo.getObservacao());
-				contatoEntity.setFeedbackId(feedback);
-				contatoEntity.setFuncionarioId(funcionario);
-
-				Contato contatoRetorno = this.contatoRepository.save(contatoEntity);
+			this.contatoRepository.save(contato);
 		}
 
+	}
+
+	private void criarAgendamento(ContatoResumo contatoResumo) {
+
+		Agendamento agendamento = new Agendamento();
+		agendamento.setClienteId(new Cliente(contatoResumo.getClienteId()));
+		agendamento.setContatoId(new Contato(contatoResumo.getContatoId()));
+		agendamento.setDhInclusao(new Date());
+		agendamento.setDhAgendamento(new Date());
+		agendamento.setFuncionarioId(new Funcionario(1));
+		agendamento.setStatusId(new Status(1));
+		agendamento.setTipoServicoId(1l);
+
+		this.agendamentoRepository.save(agendamento);
+
+	}
+
+	private void criarContato(ContatoResumo contatoResumo) {
+
+		Cliente cliente = new Cliente();
+		cliente.setId(contatoResumo.getClienteId());
+
+		Feedback feedback = new Feedback();
+		feedback.setId(Long.valueOf(contatoResumo.getFeedback()));
+
+		Funcionario funcionario = new Funcionario();
+		funcionario.setId(1);
+
+		Contato contato = new Contato();
+		contato.setClienteId(cliente);
+		contato.setFeedbackId(feedback);
+		contato.setDhContato(new Date());
+		contato.setDhInclusao(new Date());
+		contato.setObservacao(contatoResumo.getObservacao());
+		contato.setFuncionarioId(funcionario);
+
+		Contato contatoNovo = this.contatoRepository.save(contato);
+
+		contatoResumo.setContatoId(contatoNovo.getId());
 	}
 
 }

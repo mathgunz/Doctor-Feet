@@ -28,7 +28,7 @@ public class TipoServico implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Column(name = "nome")
     private String nome;
     @Column(name = "dh_inclusao")
@@ -38,15 +38,15 @@ public class TipoServico implements Serializable {
     public TipoServico() {
     }
 
-    public TipoServico(Integer id) {
+    public TipoServico(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
